@@ -12,11 +12,14 @@ import static org.apache.naming.SelectorContext.prefix;
 public class NameController {
 
     private NameMapper nameMapper;
-    public NameController(NameMapper nameMapper){this.nameMapper =nameMapper;}
+
+    public NameController(NameMapper nameMapper) {
+        this.nameMapper = nameMapper;
+    }
+
     @GetMapping("/names")
-public List<Name> findByNames(@RequestParam String startsWith){
+    public List<Name> findByNames(@RequestParam String startsWith) {
 
         return nameMapper.findByNameStartingWith(startsWith);
     }
-
 }
