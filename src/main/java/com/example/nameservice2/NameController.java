@@ -1,25 +1,34 @@
 package com.example.nameservice2;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Map;
 
-import static org.apache.naming.SelectorContext.prefix;
 
 @RestController
 public class NameController {
 
-    private NameMapper nameMapper;
+    private NameService nameService;
 
-    public NameController(NameMapper nameMapper) {
-        this.nameMapper = nameMapper;
+    public NameController(NameService nameService) {
+        this.nameService = nameService;
     }
 
     @GetMapping("/names")
     public List<Name> findByNames(@RequestParam String startsWith) {
-
-        return nameMapper.findByNameStartingWith(startsWith);
+        List<Name> names = nameService.findNamesStartingWith(startsWith);
+        return names;
     }
+
+    @GetMapping("/names/{id}")
+    public Name getUser(@PathVariable("id") int id) {
+        return nameService.findName(id);
+    }
+    
 }
+
