@@ -25,7 +25,10 @@ public class NameService {
             throw new NameNotFoundException("そのIDは存在しません。");
         }
     }
+    
 }
+
+
 
 
 
