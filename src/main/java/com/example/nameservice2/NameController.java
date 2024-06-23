@@ -1,13 +1,9 @@
 package com.example.nameservice2;
 
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -29,6 +25,6 @@ public class NameController {
     public Name getUser(@PathVariable("id") int id) {
         return nameService.findName(id);
     }
-    
+
 }
 

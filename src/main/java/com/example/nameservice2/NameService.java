@@ -19,11 +19,10 @@ public class NameService {
 
     public Name findName(int id) {
         Optional<Name> name = this.nameMapper.findById(id);
-
         if (name.isPresent()) {
             return name.get();
         } else {
-            throw new NameNotFoundException("そのIDは、存在しません。");
+            throw new NameNotFoundException("そのIDは存在しません。");
         }
     }
 }
